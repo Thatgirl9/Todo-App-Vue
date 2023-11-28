@@ -55,16 +55,22 @@ export default {
   <div class="main-container">
     <div class="black-con"></div>
     <div class="todo-main-con">
-      <h1 class="todo-header">My Vue Todo App</h1>
       <div class="todo-con">
-        <Create @add="addItem"></Create>
-        <Read :items="items" @edit="editItem" @delete="startDelete"></Read>
-        <Update v-if="isEditing" @update="updateItem"></Update>
-        <Delete
-          v-if="isDeleting"
-          @confirm="deleteItem"
-          @cancel="cancelDelete"
-        ></Delete>
+        <div class="img-header">
+          <h1 class="todo-header">Todo App</h1>
+          <img src="./assets/icons8-checklist-53.png" />
+        </div>
+
+        <div class="todo-list-con">
+          <Create @add="addItem"></Create>
+          <Read :items="items" @edit="editItem" @delete="startDelete"> </Read>
+          <Update v-if="isEditing" @update="updateItem"></Update>
+          <Delete
+            v-if="isDeleting"
+            @confirm="deleteItem"
+            @cancel="cancelDelete"
+          ></Delete>
+        </div>
       </div>
     </div>
   </div>
@@ -95,19 +101,38 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   flex-direction: column;
-  margin-top: -5em;
-  padding: 2em 0.3em;
+  margin-top: -10em;
 }
-.todo-main-con > .todo-header {
+
+.todo-con {
+  /* padding: 0.4em 2em; */
+  /* border: 2px solid green; */
+  width: 30%;
+}
+
+.img-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  /* border: 1px solid blue; */
+}
+.todo-header {
   font-family: "Josefin Sans", sans-serif;
   /* font-size: 3em; */
   font-weight: 600;
   color: white;
-  margin-bottom: 1em;
 }
-.todo-con {
-  border: 2px solid purple;
+.todo-list-con {
+  /* border: 2px solid purple; */
+}
+
+@media screen and (max-width: 768px) {
+  .todo-con {
+    width: 95%;
+  }
 }
 </style>

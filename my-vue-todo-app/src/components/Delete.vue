@@ -1,7 +1,7 @@
 <template>
+  <!-- Delete Operation -->
+  <!-- Responsible for confirming or canceling the deletion of an item -->
   <div class="delete-div">
-    <!-- <h2>Delete Item</h2> -->
-
     <div class="del-div">
       <button class="trash-btn">
         <i class="fa-solid fa-trash" style="color: #fff"></i>

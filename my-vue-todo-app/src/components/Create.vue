@@ -15,12 +15,14 @@ export default {
       } else {
         alert("Please enter a todo item");
       }
+      // This emits an "add" event with the new item name when the form is submitted
     },
   },
 };
 </script>
 
 <!-- Create Todo Operation -->
+<!-- Responsible for adding new items to the list -->
 <template>
   <div class="create-div">
     <form>
@@ -33,6 +35,8 @@ export default {
           class="todo-input"
           placeholder="Create a new todo..."
         />
+        <!-- newItemName = is a data property that stores the name of the new item -->
+
         <button class="icon-tick" @click="addItem" type="submit">
           <i class="fa-solid fa-check tick" style="color: #4e4b4b"></i>
         </button>

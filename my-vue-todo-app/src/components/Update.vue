@@ -1,4 +1,6 @@
 <template>
+  <!-- Update Operation -->
+  <!-- Responsible for editing an existing item -->
   <div class="update-div">
     <form @submit.prevent="updateItem">
       <label for="itemName">
@@ -29,6 +31,7 @@ export default {
 
   methods: {
     updateItem() {
+      // Emit an "update" event with the updated item name to the parent component when the form is submitted.
       this.$emit("update", this.updatedItemName);
       this.updatedItemName = "";
     },
@@ -51,7 +54,6 @@ label {
   width: 100%;
   padding: 0.5rem;
   border-radius: 0.2rem;
-  /* background-color: #fff; */
 }
 
 .icon-btn {

@@ -14,7 +14,9 @@ export default {
   },
   data() {
     return {
+      // Stores the list of items and variables
       items: [],
+      // Manages the state of editing and deleting items
       isEditing: false,
       isDeleting: false,
       selectedItemIndex: null,
@@ -24,15 +26,6 @@ export default {
   // LOCAL STORAGE MOUNTED
 
   mounted() {
-    //   if(localStorage.getItem('items')){
-    //     try{
-    //       this.items = JSON.parse(localStorage.getItem('items'));
-    //     } catch(e){
-    //       localStorage.removeItem('items');
-    //     }
-    //   }
-    // },
-    // Load items from local storage when the component is created.
     this.loadItemsFromLocalStorage();
   },
 
@@ -45,10 +38,14 @@ export default {
       this.saveItemsToLocalStorage();
     },
     editItem(index) {
+      // Sets the state(isEditing = true) to start editing an item.
       this.isEditing = true;
+      // Stores the index of the item being called
       this.selectedItemIndex = index;
     },
+
     updateItem(updatedItemName) {
+      // Update the item at the selected index with the updated item name(new name)
       this.items[this.selectedItemIndex] = updatedItemName;
       this.isEditing = false;
       this.selectedItemIndex = null;
@@ -56,11 +53,15 @@ export default {
       // Save items to local storage after update
       this.saveItemsToLocalStorage();
     },
+
     startDelete(index) {
+      // Sets the state(isDeleting = true) to start deleting an item and stores the index of the item being selected.
       this.isDeleting = true;
       this.selectedItemIndex = index;
     },
+
     deleteItem() {
+      // Delete the item at the selected index
       this.items.splice(this.selectedItemIndex, 1);
       this.isDeleting = false;
       this.selectedItemIndex = null;
@@ -69,6 +70,7 @@ export default {
       this.saveItemsToLocalStorage();
     },
     cancelDelete() {
+      // Sets the state(isDeleting = false) to cancel deleting an item.
       this.isDeleting = false;
       this.selectedItemIndex = null;
     },
@@ -102,6 +104,7 @@ export default {
         <div class="todo-list-con">
           <Create @add="addItem"></Create>
           <Read :items="items" @edit="editItem" @delete="startDelete"> </Read>
+          <!-- V-if(conditional rendering) shows the update and delete components based on their state(True/false) - (isEditing and isDeleting) -->
           <Update v-if="isEditing" @update="updateItem"></Update>
           <Delete
             v-if="isDeleting"

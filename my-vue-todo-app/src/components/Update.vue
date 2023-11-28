@@ -1,6 +1,5 @@
 <template>
   <div class="update-div">
-    <!-- <h2>Update Item</h2> -->
     <form @submit.prevent="updateItem">
       <label for="itemName">
         <button class="icon-btn">

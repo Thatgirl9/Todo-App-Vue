@@ -2,6 +2,7 @@
   <!-- Read Item Operation -->
   <div>
     <!-- <h2>Read Items</h2> -->
+
     <ul>
       <li v-for="(item, index) in items" :key="index">
         <input type="checkbox" />
@@ -37,6 +38,15 @@ export default {
     deleteItem(index) {
       this.$emit("delete", index);
     },
+
+    // strikeThrough() {
+    //   alert("strikeThrough");
+    //   // const strike = document.querySelector("input[type=checkbox]:checked");
+    //   // const textDecor = document.querySelector(".todo-input");
+    //   // if (strike) {
+    //   //   textDecor.style.textDecoration = lineThrough;
+    //   // }
+    // },
   },
 };
 </script>
@@ -77,6 +87,12 @@ li {
   font-size: 1rem;
   font-weight: 500;
   color: #333;
+}
+
+/* FOR LINE THROUGH */
+input[type="checkbox"]:checked + input[type="text"] {
+  color: #ccc;
+  text-decoration: line-through;
 }
 
 button {

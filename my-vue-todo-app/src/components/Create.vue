@@ -23,7 +23,7 @@ export default {
     <form>
       <label for="itemName">Item Name:</label>
       <input type="text" required v-model="newItemName" />
-      <button type="submit">Add Item</button>
+      <button type="submit" @click="addItem">Add Item</button>
     </form>
   </div>
 </template>

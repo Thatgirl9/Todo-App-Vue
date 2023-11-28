@@ -9,8 +9,12 @@ export default {
 
   methods: {
     addItem() {
-      this.$emit("add", this.newItemName);
-      this.newItemName = "";
+      if (this.newItemName) {
+        this.$emit("add", this.newItemName);
+        this.newItemName = "";
+      } else {
+        alert("Please enter a todo item");
+      }
     },
   },
 };
@@ -19,7 +23,6 @@ export default {
 <!-- Create Todo Operation -->
 <template>
   <div class="create-div">
-    <!-- <h2>Create Item</h2> -->
     <form>
       <label for="itemName" class="write-todo">
         <input type="checkbox" />
@@ -34,8 +37,6 @@ export default {
           <i class="fa-solid fa-check tick" style="color: #4e4b4b"></i>
         </button>
       </label>
-
-      <!-- <button type="submit" >Add Item</button> -->
     </form>
   </div>
 </template>

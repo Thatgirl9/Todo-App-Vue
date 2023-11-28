@@ -21,9 +21,28 @@ export default {
     };
   },
 
+  // LOCAL STORAGE MOUNTED
+
+  mounted() {
+    //   if(localStorage.getItem('items')){
+    //     try{
+    //       this.items = JSON.parse(localStorage.getItem('items'));
+    //     } catch(e){
+    //       localStorage.removeItem('items');
+    //     }
+    //   }
+    // },
+    // Load items from local storage when the component is created.
+    this.loadItemsFromLocalStorage();
+  },
+
   methods: {
     addItem(newItemName) {
+      // Add the new item to the items array
       this.items.push(newItemName);
+
+      // Save items to local storage
+      this.saveItemsToLocalStorage();
     },
     editItem(index) {
       this.isEditing = true;
@@ -33,6 +52,9 @@ export default {
       this.items[this.selectedItemIndex] = updatedItemName;
       this.isEditing = false;
       this.selectedItemIndex = null;
+
+      // Save items to local storage after update
+      this.saveItemsToLocalStorage();
     },
     startDelete(index) {
       this.isDeleting = true;
@@ -42,10 +64,26 @@ export default {
       this.items.splice(this.selectedItemIndex, 1);
       this.isDeleting = false;
       this.selectedItemIndex = null;
+
+      // Save items to local storage after delete
+      this.saveItemsToLocalStorage();
     },
     cancelDelete() {
       this.isDeleting = false;
       this.selectedItemIndex = null;
+    },
+
+    saveItemsToLocalStorage() {
+      // Save items array to local storage
+      localStorage.setItem("todoItems", JSON.stringify(this.items));
+    },
+
+    loadItemsFromLocalStorage() {
+      // Load items from local storage
+      const storedItems = localStorage.getItem("todoItems");
+      if (storedItems) {
+        this.items = JSON.parse(storedItems);
+      }
     },
   },
 };
@@ -89,7 +127,6 @@ export default {
 .main-container {
   width: 100%;
   height: 100vh;
-  /* color: white; */
 }
 
 .black-con {
@@ -101,14 +138,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 2px solid red; */
   flex-direction: column;
   margin-top: -10em;
 }
 
 .todo-con {
-  /* padding: 0.4em 2em; */
-  /* border: 2px solid green; */
   width: 30%;
 }
 
@@ -118,16 +152,11 @@ export default {
   width: 100%;
   justify-content: space-between;
   margin-bottom: 2em;
-  /* border: 1px solid blue; */
 }
 .todo-header {
   font-family: "Josefin Sans", sans-serif;
-  /* font-size: 3em; */
   font-weight: 600;
   color: white;
-}
-.todo-list-con {
-  /* border: 2px solid purple; */
 }
 
 @media screen and (max-width: 768px) {

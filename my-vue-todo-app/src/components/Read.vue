@@ -7,11 +7,11 @@
         <input type="checkbox" />
         <input type="text" :value="item" class="todo-input" />
         <!-- {{ item }} -->
-        <button @click="editItem(index)">
+        <button @click="editItem(index)" class="pen-btn">
           <i class="fa-solid fa-pen" style="color: #454545"></i>
         </button>
         <!-- <button @click="deleteItem(index)">Delete</button> -->
-        <button @click="deleteItem(index)">
+        <button @click="deleteItem(index)" class="trash-btn">
           <i class="fa-solid fa-trash" style="color: #3f4040"></i>
         </button>
       </li>
@@ -82,5 +82,10 @@ li {
 button {
   background: transparent;
   border: none;
+}
+
+.pen-btn:hover,
+.trash-btn:hover {
+  cursor: pointer;
 }
 </style>

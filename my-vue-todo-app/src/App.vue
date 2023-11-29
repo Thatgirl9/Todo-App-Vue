@@ -97,7 +97,7 @@ export default {
     <div class="todo-main-con">
       <div class="todo-con">
         <div class="img-header">
-          <h1 class="todo-header">Todo App</h1>
+          <h1 class="todo-header">To-do App</h1>
           <img src="./assets/icons8-checklist-53.png" />
         </div>
 
